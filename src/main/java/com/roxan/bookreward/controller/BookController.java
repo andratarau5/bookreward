@@ -1,7 +1,7 @@
 package com.roxan.bookreward.controller;
 
 import com.roxan.bookreward.model.Book;
-import com.roxan.bookreward.repository.BookRepository;
+import com.roxan.bookreward.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,54 +16,49 @@ import java.util.List;
 public class BookController {
 
     @Autowired
-    private BookRepository bookRepository;
+    private BookService bookService;
 
     @GetMapping("/showallbooks")
     public String showAllBooks(Model model){
-        List<Book> bookList = bookRepository.findAll();
+        List<Book> bookList = bookService.findAll();
         model.addAttribute("books",bookList);
-        return "showallbooks";
+        return "book/showallbooks";
     }
 
-
-    @GetMapping("/")
-    public String index(){
-        return "index";
-    }
 
     @GetMapping("/addbook")              // we need GetMapping so we can populate our template
     public String addBook(Model model){
         model.addAttribute("book",new Book());
-        return "addbook";
+        return "book/addbook";
     }
 
     @PostMapping("/addbook")
     public String addBook(@ModelAttribute Book book){
-        bookRepository.save(book);
+        bookService.save(book);
         return "redirect:/showallbooks";
     }
 
     @GetMapping("/editbook/{id}")
     public String editBook(Model model, @PathVariable Integer id){
-        Book book = bookRepository.findById(id).get();
+        Book book = bookService.findById(id);
         model.addAttribute("book",new Book());
-        return "editbook";
+        return "book/editbook";
     }
 
     @PostMapping("/editbook/{id}")
     public String editBook(@ModelAttribute Book book, @PathVariable Integer id){
-        Book database_book = bookRepository.findById(id).get(); //get it from the database to be able to update the id
+        Book database_book = bookService.findById(id); //get it from the database to be able to update the id
         database_book.setTitle(book.getTitle());    //update fields
         database_book.setAuthor(book.getAuthor());
         database_book.setYear(book.getYear());
         System.out.println(database_book);
-        bookRepository.save(book);
+        bookService.save(book);
         return "redirect:/showallbooks";
     }
 
     @GetMapping("/deletebook/{id}")
     public String deleteBook(@PathVariable Integer id){
-        bookRepository.deleteById(id);
+        bookService.deleteById(id);
         return "redirect:/showallbooks";
     }
 }
