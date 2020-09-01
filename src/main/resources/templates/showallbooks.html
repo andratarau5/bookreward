@@ -7,6 +7,10 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
     /* Remove the navbar's default margin-bottom and rounded borders */
     .navbar {
@@ -39,7 +43,8 @@
       }
       .row.content {height:auto;}
     }
-  </style>
+
+    </style>
 </head>
 <body>
 
@@ -77,6 +82,42 @@
             <h2>Released Books</h2>
             <p>Choose a type and go search your favourite book</p>
             <hr>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <td>
+                            Book Id
+                        </td>
+                        <td>
+                            Title
+                        </td>
+                        <td>
+                            Author
+                        </td>
+                        <td>
+                            Year
+                        </td>
+                    </tr>
+                    </thead>
+                    <tbody th:each="b : ${books}">
+                    <tr>
+                        <td th:text="${b.bookId}"></td>
+                        <td th:text="${b.title}"></td>
+                        <td th:text="${b.author}"></td>
+                        <td th:text="${b.year}"></td>
+                        <td>
+                            <a th:href="@{/editbook/{id}(id=${b.bookId})}">Edit
+                                <i class="small material-icons">create</i>
+                            </a>
+                            <a th:href="@{/deletebook/{id}(id=${b.bookId})}">Delete
+                                <i class="small material-icons">delete</i>
+                            </a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
         <div class="col-sm-2 sidenav">
             <div class="well">
@@ -90,7 +131,7 @@
 </div>
 
 <footer class="container-fluid text-center">
-    <p>Footer Text</p>
+    <p>Don't Worry, Be Happy!</p>
 </footer>
 
 </body>

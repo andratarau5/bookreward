@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit book</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<a th:href ="@{/}">Home</a>
+<form th:action="@{/editbook/{id}(id=${book.bookId})}" th:object="${book}" method="post">
+    <div class = "container">
+        <h2>Edit a book</h2>
+        <hr>
+        <label for="title"><b>Title</b></label>
+        <input th:field="*{title}" id="title" type="text" placeholder="Title" required>
+
+        <label for="author"><b>Author</b></label>
+        <input th:field="*{author}" id="author" type="text" placeholder="Author"  required>
+
+        <label for="year"><b>Year</b></label>
+        <input th:field="*{year}" id="year" type="text" placeholder="Year"  required>
+
+        <button type="submit" class="register-button">Add</button>
+    </div>
+</form>
+</body>
+</html>
