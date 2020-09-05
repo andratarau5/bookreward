@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
-    <title>Book Reward</title>
+    <title>Book Categories</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
     /* Remove the navbar's default margin-bottom and rounded borders */
     .navbar {
@@ -39,7 +43,8 @@
       }
       .row.content {height:auto;}
     }
-  </style>
+
+    </style>
 </head>
 <body>
 
@@ -69,14 +74,43 @@
 <div class="container-fluid text-center">
     <div class="row content">
         <div class="col-sm-2 sidenav">
-            <p><a href="#">Link</a></p>
-            <p><a href="#">Link</a></p>
+            <p><a href="addbooktype">Add category</a></p>
+            <p><a href="showallbooks">All books</a></p>
             <p><a href="#">Link</a></p>
         </div>
         <div class="col-sm-8 text-left">
-            <h1>Welcome to BOOK REWARD</h1>
-            <p>Everything about books & more!</p>
+            <h2>Categories</h2>
+            <p>Choose a type and go search your favourite book</p>
             <hr>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <td>
+                            Category Id
+                        </td>
+                        <td>
+                            Category Name
+                        </td>
+                        <td>Action</td>
+                    </tr>
+                    </thead>
+                    <tbody th:each="b : ${booktypes}">
+                    <tr>
+                        <td th:text="${b.typeId}"></td>
+                        <td th:text="${b.typeName}"></td>
+                        <td>
+                            <a th:href="@{/editbooktype/{id}(id=${b.typeId})}">
+                                <i class="small material-icons">create</i>
+                            </a>
+                            <a th:href="@{/deletebooktype/{id}(id=${b.typeId})}">
+                                <i class="small material-icons">delete</i>
+                            </a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
         <div class="col-sm-2 sidenav">
             <div class="well">
