@@ -44,6 +44,21 @@
       .row.content {height:auto;}
     }
 
+    .row.content{
+        display: flex;
+        justify-content: center;
+        background-image: url('../images/book1.jpg');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+    .center{
+        background-color: #dc9589;
+    }
+
+
+
+
     </style>
 </head>
 <body>
@@ -51,23 +66,31 @@
 
 <div class="container-fluid text-center">
     <div class="row content">
-        <form th:action="@{/addbook}" method="post" th:object="${book}">
-            <div class="col-sm-8 text-left">
-                <h2>Adding a new book</h2>
-                <p>Please fill in to add a new book:</p>
-                <hr>
-                <label for="title"><b>Title</b></label>
-                <input th:field="*{title}" id="title" type="text" placeholder="Title" required>
+        <div class="center">
+            <form th:action="@{/addbook}" method="post" th:object="${book}">
+                <div class="col-xs-12 col-sm-12">
+                    <h2>Adding a new book</h2>
+                    <p>Please fill in to add a new book:</p>
+                    <hr>
+                    <label for="title"><b>Title</b></label>
+                    <input th:field="*{title}" id="title" type="text" placeholder="Title" required>
 
-                <label for="author"><b>Author</b></label>
-                <input th:field="*{author}" id="author" type="text" placeholder="Author" required>
+                    <label for="author"><b>Author</b></label>
+                    <input th:field="*{author}" id="author" type="text" placeholder="Author" required>
 
-                <label for="year"><b>Year</b></label>
-                <input th:field="*{year}" id="year" type="text" placeholder="Year" required>
+                    <label for="year"><b>Year</b></label>
+                    <input th:field="*{year}" id="year" type="text" placeholder="Year" required>
 
-                <button type="submit" class="register-button">Add</button>
-            </div>
-        </form>
+                    <hr>
+                    <label for="book_type"><b>Category</b></label>
+                    <select id="book_type" th:field="*{bookType.typeId}">
+                        <option th:each="sc: ${booktypes}" th:value="${sc.typeId}" th:text="${sc.typeName}"/>
+                    </select>
+                    <hr>
+                    <button type="button" class="btn btn-default">Add</button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 

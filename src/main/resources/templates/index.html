@@ -23,7 +23,7 @@
 
     /* Set gray background color and 100% height */
     .sidenav {
-      padding-top: 20px;
+      padding-top: 100px;
       background-color: #964050;
       height: 100%;
     }
@@ -43,6 +43,12 @@
       }
       .row.content {height:auto;}
     }
+
+    a {
+    color: #f6faf9;
+    text-decoration: none;
+}
+
   </style>
 </head>
 <body>
@@ -53,6 +59,7 @@
     <div class="row content">
         <div class="col-sm-2 sidenav">
             <p><a th:href="@{/addbooktype}">Add category</a></p>
+            <hr>
             <p><a th:href="@{/addbook}">Add book</a></p>
 
         </div>

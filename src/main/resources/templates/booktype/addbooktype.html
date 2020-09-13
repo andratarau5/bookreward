@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
-    <title>Add book</title>
+    <title>Add category</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -43,7 +43,17 @@
       }
       .row.content {height:auto;}
     }
-
+    .row.content{
+        display: flex;
+        justify-content: center;
+        background-image: url('../images/book1.jpg');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+    .center{
+        background-color: #dc9589;
+        }
 
 
     </style>
@@ -52,17 +62,20 @@
 <nav th:insert="menu.html::menu_nav"></nav>
 <div class="container-fluid text-center">
     <div class="row content">
-        <form th:action="@{/addbooktype}" method="post" th:object="${booktype}">
-            <div class="col-sm-8 text-left">
-                <h2>Adding a new category</h2>
-                <p>Please fill in to add a new category of books:</p>
-                <hr>
-                <label for="typeName"><b>Category Name</b></label>
-                <input th:field="*{typeName}" id="typeName" type="text" placeholder="typeName" required>
+        <div class="center">
+            <form th:action="@{/addbooktype}" method="post" th:object="${booktype}">
+                <div class="col-xs-12 col-sm-12">
+                    <h2>Adding a new category</h2>
+                    <p>Please fill in to add a new category of books:</p>
+                    <hr>
+                    <label for="typeName"><b>Category Name</b></label>
+                    <input th:field="*{typeName}" id="typeName" type="text" placeholder="typeName" required>
 
-                <button type="submit" class="register-button">Add</button>
-            </div>
-        </form>
+                    <hr>
+                    <button type="button" class="btn btn-default">Add</button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 
