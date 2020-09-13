@@ -2,6 +2,7 @@ package com.roxan.bookreward.service;
 
 
 import com.roxan.bookreward.model.Book;
+import com.roxan.bookreward.model.BookType;
 import com.roxan.bookreward.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

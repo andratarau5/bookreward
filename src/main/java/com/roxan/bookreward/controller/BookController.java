@@ -2,6 +2,7 @@ package com.roxan.bookreward.controller;
 
 import com.roxan.bookreward.model.Book;
 import com.roxan.bookreward.service.BookService;
+import com.roxan.bookreward.service.BookTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,9 +17,12 @@ import java.util.List;
 public class BookController {
 
     @Autowired
+    private BookTypeService bookTypeService;
+
+    @Autowired
     private BookService bookService;
 
-    @GetMapping("/showallbooks")
+    @GetMapping("allbooks")
     public String showAllBooks(Model model){
         List<Book> bookList = bookService.findAll();
         model.addAttribute("books",bookList);
@@ -28,6 +32,7 @@ public class BookController {
 
     @GetMapping("/addbook")              // we need GetMapping so we can populate our template
     public String addBook(Model model){
+        model.addAttribute("booktypes",bookTypeService.findAll());
         model.addAttribute("book",new Book());
         return "book/addbook";
     }
@@ -35,30 +40,27 @@ public class BookController {
     @PostMapping("/addbook")
     public String addBook(@ModelAttribute Book book){
         bookService.save(book);
-        return "redirect:/showallbooks";
+        return "redirect:/allbooks";
     }
 
     @GetMapping("/editbook/{id}")
     public String editBook(Model model, @PathVariable Integer id){
         Book book = bookService.findById(id);
-        model.addAttribute("book",new Book());
+        model.addAttribute("book",book);
+        model.addAttribute("booktypes", bookTypeService.findAll());
         return "book/editbook";
     }
 
     @PostMapping("/editbook/{id}")
     public String editBook(@ModelAttribute Book book, @PathVariable Integer id){
-        Book database_book = bookService.findById(id); //get it from the database to be able to update the id
-        database_book.setTitle(book.getTitle());    //update fields
-        database_book.setAuthor(book.getAuthor());
-        database_book.setYear(book.getYear());
-        System.out.println(database_book);
+        System.out.println(book);
         bookService.save(book);
-        return "redirect:/showallbooks";
+        return "redirect:/allbooks";
     }
 
     @GetMapping("/deletebook/{id}")
     public String deleteBook(@PathVariable Integer id){
         bookService.deleteById(id);
-        return "redirect:/showallbooks";
+        return "redirect:/allbooks";
     }
 }

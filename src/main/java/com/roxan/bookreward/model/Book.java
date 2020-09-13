@@ -21,6 +21,7 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int bookId;
 
+
     @ManyToOne(fetch = FetchType.LAZY)
     private BookType bookType;
 }

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
-    <title>Released books</title>
+    <title>View books in category</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -57,8 +57,10 @@
             <p><a th:href="@{/addbook}">Add Book</a></p>
         </div>
         <div class="col-sm-8 text-left">
-            <h2>Released Books</h2>
-            <p>Choose a type and go search your favourite book</p>
+            <h2>View books in category</h2>
+            <a th:href="@{/addbook}">
+                <i class="small material-icons">add</i>
+            </a>
             <hr>
             <div class="table-responsive">
                 <table class="table">
@@ -76,9 +78,6 @@
                         <td>
                             Year
                         </td>
-                        <td>
-                            Type
-                        </td>
                         <td>Action</td>
                     </tr>
                     </thead>
@@ -88,7 +87,6 @@
                         <td th:text="${b.title}"></td>
                         <td th:text="${b.author}"></td>
                         <td th:text="${b.year}"></td>
-                        <td th:text="${b.bookType.typeName}"></td>
                         <td>
                             <a th:href="@{/editbook/{id}(id=${b.bookId})}">
                                 <i class="small material-icons">create</i>

@@ -18,7 +18,7 @@ public class BookTypeController {
     @Autowired
     private BookTypeService bookTypeService;
 
-    @GetMapping("/showallbooktypes")
+    @GetMapping("allbooktypes")
     public String showAllBookTypes(Model model){
         List<BookType> bookTypes = bookTypeService.findAll();
         model.addAttribute("booktypes",bookTypes);
@@ -27,7 +27,7 @@ public class BookTypeController {
 
     @GetMapping("/addbooktype")
     public String addBookType(Model model){
-        model.addAttribute("booktypes",new BookType());
+        model.addAttribute("booktype",new BookType());
         return "booktype/addbooktype";
     }
 
@@ -41,5 +41,11 @@ public class BookTypeController {
     public String viewBooksInGroup(Model model, @PathVariable Integer id){
         model.addAttribute("books",bookTypeService.findBooksByType(id));
         return "booktype/viewbooks";
+    }
+
+    @GetMapping("/deletebooktype/{id}")
+    public String deleteBookType(@PathVariable Integer id){
+        bookTypeService.deleteCategoryById(id);
+        return "redirect:/allbooktypes";
     }
 }

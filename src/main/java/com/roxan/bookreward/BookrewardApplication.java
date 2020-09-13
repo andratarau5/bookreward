@@ -11,20 +11,21 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class BookrewardApplication{
 
 //	@Autowired
-//	private BookRepository bookRepository;
+//	private BookTypeRepository bookTypeRepository;
 
-	public static void main(String[] args) {
-		SpringApplication.run(BookrewardApplication.class, args);
-	}
+		public static void main(String[] args) {
+			SpringApplication.run(com.roxan.bookreward.BookrewardApplication.class, args);
+		}
 
-//	@Override
-//	public void run(String... args) throws Exception {
+
+
+//	public void run(String... args) {
 //
-//		Book book = new Book();
-//		book.setTitle("Ion");
-//		book.setAuthor("Liviu Rebreanu");
-//		book.setYear(1920);
+//		BookType bookType = new BookType();
+//		bookType.setTypeName("Romance");
+//		bookTypeRepository.save(bookType);
+//		bookType.setTypeName("S.F.");
+//		bookTypeRepository.save(bookType);
 //
-//		bookRepository.save(book);
 //	}
-}
+	}

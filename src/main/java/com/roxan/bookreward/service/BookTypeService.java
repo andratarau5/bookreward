@@ -3,13 +3,16 @@ package com.roxan.bookreward.service;
 import com.roxan.bookreward.model.Book;
 import com.roxan.bookreward.model.BookType;
 import com.roxan.bookreward.repository.BookTypeRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service("IBookTypeService")
 public class BookTypeService {
 
+    @Autowired
     private BookTypeRepository bookTypeRepository;
 
     public List<BookType> findAll(){
