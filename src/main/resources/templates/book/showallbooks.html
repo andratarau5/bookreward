@@ -23,7 +23,7 @@
 
     /* Set gray background color and 100% height */
     .sidenav {
-      padding-top: 20px;
+      padding-top: 100px;
       background-color: #964050;
       height: 100%;
     }
@@ -44,6 +44,26 @@
       .row.content {height:auto;}
     }
 
+    a {
+        color: #f6faf9;
+        text-decoration: none;
+    }
+
+    /* Scrollbar */
+    .col-sm-8.text-left {
+    height: 77.9vh;
+    background: whitesmoke;
+    overflow-y: auto;
+    margin: 0 auto;
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    }
+
+
+
+
+
+
+
     </style>
 </head>
 <body>
@@ -54,6 +74,7 @@
     <div class="row content">
         <div class="col-sm-2 sidenav">
             <p><a th:href="@{/addbooktype}">Add Category</a></p>
+            <hr>
             <p><a th:href="@{/addbook}">Add Book</a></p>
         </div>
         <div class="col-sm-8 text-left">
@@ -79,7 +100,7 @@
                         <td>
                             Type
                         </td>
-                        <td>Action</td>
+                        <td></td>
                     </tr>
                     </thead>
                     <tbody th:each="b : ${books}">
@@ -95,6 +116,9 @@
                             </a>
                             <a th:href="@{/deletebook/{id}(id=${b.bookId})}">
                                 <i class="small material-icons">delete</i>
+                            </a>
+                            <a th:href="@{/addtofavorite/{id}(id=${b.bookId})}">
+                                <i class="small material-icons">favorite</i>
                             </a>
                         </td>
                     </tr>

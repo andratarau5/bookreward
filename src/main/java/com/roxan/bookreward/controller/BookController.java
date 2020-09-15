@@ -29,7 +29,6 @@ public class BookController {
         return "book/showallbooks";
     }
 
-
     @GetMapping("/addbook")              // we need GetMapping so we can populate our template
     public String addBook(Model model){
         model.addAttribute("booktypes",bookTypeService.findAll());
@@ -62,5 +61,11 @@ public class BookController {
     public String deleteBook(@PathVariable Integer id){
         bookService.deleteById(id);
         return "redirect:/allbooks";
+    }
+
+    public void saveFavorite(Model model, List<Book> books) {
+
+
+
     }
 }
