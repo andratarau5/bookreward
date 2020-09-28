@@ -45,7 +45,7 @@
     }
 
     a {
-        color: #f6faf9;
+        color: #2a1a25;
         text-decoration: none;
     }
 
@@ -60,10 +60,6 @@
 
 
 
-
-
-
-
     </style>
 </head>
 <body>
@@ -73,13 +69,20 @@
 <div class="container-fluid text-center">
     <div class="row content">
         <div class="col-sm-2 sidenav">
+            <div class="well">
             <p><a th:href="@{/addbooktype}">Add Category</a></p>
+            </div>
             <hr>
+            <div class="well">
             <p><a th:href="@{/addbook}">Add Book</a></p>
+            </div>
         </div>
         <div class="col-sm-8 text-left">
             <h2>Released Books</h2>
-            <p>Choose a type and go search your favourite book</p>
+            <p>Happy books for happy readers :)</p>
+            <a th:href="@{/addbook}">
+                <i class="small material-icons">add</i>
+            </a>
             <hr>
             <div class="table-responsive">
                 <table class="table">
@@ -127,12 +130,6 @@
             </div>
         </div>
         <div class="col-sm-2 sidenav">
-            <div class="well">
-                <p>ADS</p>
-            </div>
-            <div class="well">
-                <p>ADS</p>
-            </div>
         </div>
     </div>
 </div>

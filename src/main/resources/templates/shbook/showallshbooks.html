@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
-    <title>Book Categories</title>
+    <title>Second-Hand Books</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -45,8 +45,8 @@
     }
 
     a {
-    color: #2a1a25;
-    text-decoration: none;
+        color: #2a1a25;
+        text-decoration: none;
     }
 
     /* Scrollbar */
@@ -58,6 +58,7 @@
     border: 1px solid rgba(0, 0, 0, 0.25);
     }
 
+
     </style>
 </head>
 <body>
@@ -67,41 +68,54 @@
 <div class="container-fluid text-center">
     <div class="row content">
         <div class="col-sm-2 sidenav">
-            <div class="well">
-            <p><a th:href="@{/addbooktype}">Add category</a></p>
-            </div>
-            <hr>
-            <div class="well">
-            <p><a th:href="@{/addbook}">Add book</a></p>
-            </div>
         </div>
         <div class="col-sm-8 text-left">
-            <h2>Categories</h2>
-            <p>Choose a type and go search your favourite book</p>
+            <h2>Second-Hand Books</h2>
+            <p>Nice people selling their books :) </p>
+            <a th:href="@{/addshbook}">
+                <i class="small material-icons">add</i>
+            </a>
             <hr>
             <div class="table-responsive">
                 <table class="table">
                     <thead>
                     <tr>
                         <td>
-                            Category Id
+                             Id
                         </td>
                         <td>
-                            Category Name
+                            Title
                         </td>
+                        <td>
+                            Author
+                        </td>
+                        <td>
+                            Seller
+                        </td>
+                        <td>
+                            Phone
+                        </td>
+                        <td>
+                            Price
+                        </td>
+
                         <td></td>
                     </tr>
                     </thead>
-                    <tbody th:each="b : ${booktypes}">
+                    <tbody th:each="b : ${shbooks}">
                     <tr>
-                        <td th:text="${b.typeId}"></td>
-                        <td th:text="${b.typeName}"></td>
+                        <td th:text="${b.shBookId}"></td>
+                        <td th:text="${b.title}"></td>
+                        <td th:text="${b.author}"></td>
+                        <td th:text="${b.seller}"></td>
+                        <td th:text="${b.phoneNumber}"></td>
+                        <td th:text="${b.price}"></td>
                         <td>
-                            <a th:href="@{/deletebooktype/{id}(id=${b.typeId})}">
-                                <i class="small material-icons">delete</i>
+                            <a th:href="@{/editshbook/{id}(id=${b.shBookId})}">
+                                <i class="small material-icons">create</i>
                             </a>
-                            <a th:href="@{/type/{id}/books(id=${b.typeId})}">
-                                <i class="small material-icons">center_focus_strong</i>
+                            <a th:href="@{/deleteshbook/{id}(id=${b.shBookId})}">
+                                <i class="small material-icons">delete</i>
                             </a>
                         </td>
                     </tr>

@@ -24,7 +24,6 @@ public class BookTypeService {
     }
 
     public List<Book> findBooksByType(Integer id){
-        //TODO: try catch/check if present
         return bookTypeRepository.findById(id).get().getBooks();
     }
 

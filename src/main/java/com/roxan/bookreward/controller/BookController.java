@@ -63,9 +63,4 @@ public class BookController {
         return "redirect:/allbooks";
     }
 
-    public void saveFavorite(Model model, List<Book> books) {
-
-
-
-    }
 }
