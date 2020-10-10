@@ -1,31 +1,96 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
-    <meta charset="UTF-8">
     <title>Edit book</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 450px}
+
+    /* Set gray background color and 100% height */
+    .sidenav {
+      padding-top: 20px;
+      background-color: #964050;
+      height: 100%;
+    }
+
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #2a1a25;
+      color: white;
+      padding: 15px;
+    }
+
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height:auto;}
+    }
+
+    .row.content{
+        display: flex;
+        justify-content: center;
+        background-image: url('../images/book1.jpg');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+    .center{
+        background-color: #dc9589;
+    }
+
+
+    </style>
 </head>
 <body>
-<a th:href ="@{/}">Home</a>
-<form th:action="@{/editbook/{id}(id=${book.bookId})}" th:object="${book}" method="post">
-    <div class = "container">
-        <h2>Edit a book</h2>
-        <hr>
-        <label for="title"><b>Title</b></label>
-        <input th:field="*{title}" id="title" type="text" placeholder="Title" required>
 
-        <label for="author"><b>Author</b></label>
-        <input th:field="*{author}" id="author" type="text" placeholder="Author"  required>
+<nav th:insert="menu.html::menu_nav"></nav>
 
-        <label for="year"><b>Year</b></label>
-        <input th:field="*{year}" id="year" type="text" placeholder="Year"  required>
+<div class="container-fluid text-center">
+    <div class="row content">
+        <div class="center">
+            <form th:action="@{/editbook/{id}(id=${book.bookId})}" th:object="${book}" method="post">
+                <div class="col-xs-12 col-sm-12">
+                    <div class="container">
+                        <h2>Edit the book</h2>
+                        <hr>
+                        <label for="title"><b>Title</b></label>
+                        <input th:field="*{title}" id="title" type="text" placeholder="Title" required>
 
-        <button type="submit" class="register-button">Add</button>
+                        <label for="author"><b>Author</b></label>
+                        <input th:field="*{author}" id="author" type="text" placeholder="Author" required>
+
+                        <label for="year"><b>Year</b></label>
+                        <input th:field="*{year}" id="year" type="text" placeholder="Year" required>
+
+                        <button type="submit" class="register-button">Add</button>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
-</form>
+</div>
+
+<footer class="container-fluid text-center">
+    <p>Don't Worry, Be Happy!</p>
+</footer>
+
 </body>
 </html>

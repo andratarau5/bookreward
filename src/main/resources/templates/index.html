@@ -11,6 +11,23 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script>
+function startTime() {
+  var today = new Date();
+  var h = today.getHours();
+  var m = today.getMinutes();
+  var s = today.getSeconds();
+  m = checkTime(m);
+  s = checkTime(s);
+  document.getElementById('txt').innerHTML =
+  h + ":" + m + ":" + s;
+  var t = setTimeout(startTime, 500);
+}
+function checkTime(i) {
+  if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+  return i;
+}
+    </script>
     <style>
     /* Remove the navbar's default margin-bottom and rounded borders */
     .navbar {
@@ -60,33 +77,41 @@
         color: #f6faf9;
     }
 
-  </style>
-</head>
-<body>
 
+
+    </style>
+</head>
+<body onload="startTime()">
 <nav th:insert="menu.html::menu_nav"></nav>
 
 <div class="container-fluid text-center">
     <div class="row content">
         <div class="col-sm-2 sidenav">
             <div class="well">
-            <p><a th:href="@{/addbooktype}">Add category</a></p>
+                <p><a th:href="@{/addbooktype}">Add category</a></p>
             </div>
             <hr>
             <div class="well">
-            <p><a th:href="@{/addbook}">Add book</a></p>
+                <p><a th:href="@{/addbook}">Add book</a></p>
             </div>
         </div>
         <div class="col-sm-8 text-left">
             <h1>Welcome to BOOK REWARD</h1>
             <div class="center">
-
             </div>
         </div>
         <div class="col-sm-2 sidenav">
             <div class="well">
                 <p><a th:href="@{/addshbook}">Sell a second-hand book</a></p>
             </div>
+            <hr>
+            <div>
+                <h4>
+                    Local Time
+                    <div id="txt"></div>
+                </h4>
+            </div>
+            <hr>
         </div>
     </div>
 </div>
