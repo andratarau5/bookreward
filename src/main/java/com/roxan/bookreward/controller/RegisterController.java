@@ -29,7 +29,7 @@ public class RegisterController {
         return new BCryptPasswordEncoder();
     }
 
-    @PostMapping
+    @PostMapping("/register")
     public String registerUser(String username, String password, String emailAddress){
         User user = new User();
         user.setEmailAddress(emailAddress);

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="UTF-8">
+    <title>Contact us for your favorite book</title>
+    <style>
+ label {
+color: black;
+font-weight: bold;
+display: block;
+width: 300px;
+}
+button{
+  font-family: arial;
+  color: black !important;
+  font-size: 14px;
+  text-shadow: 1px 1px 0px black;
+  box-shadow: 1px 1px 1px black;
+  padding: 10px 25px;
+  border-radius: 10px;
+  border: 2px solid black;
+}
+body{
+        background-image: url('../images/book3.jpg');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        color: #f6faf9;
+}
+</style>
+</head>
+<script>
+   function foo() {
+   alert("Submit button clicked!");
+   return true;
+}
+</script>
+<body>
+<div class="container">
+    <h3>Contact us for your favorite book</h3>
+    <a th:href="@{/index}">
+        <i class="small material-icons">home</i>
+    </a>
+    <div class="form">
+        <form action="mailto:andra.tarau96@gmail.com" method="post" enctype="text/plain">
+            <label for="fname"><b>First Name</b></label>
+            <input type="text" id="fname" name="firstname" placeholder="Your name..">
+            <label for="lname"><b>Last Name</b></label>
+            <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+            <label for="lmail"><b>Email</b></label>
+            <input type="email" id="lmail" name="email" placeholder="Your address email..">
+            <label for="subject"><b>Subject</b></label>
+            <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+            <button type="submit" value="submit" onclick="return foo();" >Send</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

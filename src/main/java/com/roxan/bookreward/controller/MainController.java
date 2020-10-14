@@ -1,11 +1,18 @@
 package com.roxan.bookreward.controller;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
+@Controller
 public class MainController {
 
     @GetMapping("/")
-    public String index(){
+    public String index() {
         return "index";
+    }
+
+    @GetMapping("/showabout")
+    public String about(){
+        return "about/showabout";
     }
 }

@@ -1,10 +1,90 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Us</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 450px}
+
+    /* Set gray background color and 100% height */
+    .sidenav {
+      padding-top: 100px;
+      background-color: #964050;
+      height: 100%;
+    }
+
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #2a1a25;
+      color: white;
+      padding: 15px;
+    }
+
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height:auto;}
+    }
+
+    a {
+        color: #2a1a25;
+        text-decoration: none;
+    }
+
+    /* Scrollbar */
+    .col-sm-8.text-left {
+    height: 77.9vh;
+    background: whitesmoke;
+    overflow-y: auto;
+    margin: 0 auto;
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    }
+
+    </style>
 </head>
 <body>
+
+<nav th:insert="menu.html::menu_nav"></nav>
+
+<div class="container-fluid text-center">
+    <div class="row content">
+        <div class="col-sm-2 sidenav">
+        </div>
+        <div class="col-sm-8 text-left">
+            <h2>About us</h2>
+            <p>About:
+                Book Reward started as a timid project, set up by two book nerds who wanted to work with a product they are passionate about- books. As an independent book-seller we strive to give our customers not only the product they are looking for, but also make our platform easy to navigate, hence our simple but practical design. We offer both new and old books, aiming to cater for as wide a variety of readers as possible.
+                Our Mission:
+                To provide books to as many reading enthusiasts as we can.
+                Book Reward is run independently by its two co founders, Andra and Roxana. They both hope to become a relevant part of the book market in the years to come.</p>
+
+        </div>
+        <div class="col-sm-2 sidenav">
+        </div>
+    </div>
+</div>
+
+<footer class="container-fluid text-center">
+    <p>Don't Worry, Be Happy!</p>
+</footer>
 
 </body>
 </html>

@@ -49,10 +49,12 @@
         text-decoration: none;
     }
 
-    /* Scrollbar */
     .col-sm-8.text-left {
-    height: 77.9vh;
-    background: whitesmoke;
+    height: 84.5vh;
+    background-image: url('../images/book5.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
     overflow-y: auto;
     margin: 0 auto;
     border: 1px solid rgba(0, 0, 0, 0.25);
@@ -116,6 +118,9 @@
                             </a>
                             <a th:href="@{/deleteshbook/{id}(id=${b.shBookId})}">
                                 <i class="small material-icons">delete</i>
+                            </a>
+                            <a th:href="@{/rentthebook/{id}(id=${b.shBookId})}">
+                                <i class="small material-icons">bookmark</i>
                             </a>
                         </td>
                     </tr>

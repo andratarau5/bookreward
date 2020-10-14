@@ -11,7 +11,6 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "users")
-// TODO: to be sure that username is unique
 public class User {
 
     @Id

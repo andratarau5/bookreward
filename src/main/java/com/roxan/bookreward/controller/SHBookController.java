@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
 
 @Controller
@@ -56,5 +57,11 @@ public class SHBookController {
     public String deleteSHBook(@PathVariable Integer id){
         shBookService.deleteById(id);
         return "redirect:/allshbooks";
+    }
+
+    @GetMapping("/rentthebook/{id}")
+    public String rentTheBook(@ModelAttribute SHBook shBook, @PathVariable Integer id){
+        shBookService.findById(id);
+        return "shbook/rentthebook";
     }
 }
